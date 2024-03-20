@@ -1,8 +1,16 @@
-html,
-body,
-#map {
-  height: 100%;
+main {
   width: 100%;
-  margin: 0px;
-  padding: 0px
+  height: 100%;
+  margin: 1rem;
+}
+
+#demo {
+  color: #000;
+  width: 20%;
+  height: 20%;
+}
+
+#map {
+  width: 500px;
+  height: 500px;
 }

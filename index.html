@@ -5,22 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="index.css">
-    
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
 
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    
     <title>Document</title>
 </head>
 <body>
     <h1>Brewery Finder</h1> 
 
-    <div id="map" style="width:750px; height:450px; border: 2px solid #3872ac;"></div>
-   
-    <script src="index.js"></script>
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4zfHRiPRn-bBx4dEKIswKEwybHxHiGaU&callback=initMap&v=weekly"
-    defer
-  ></script>
+<main>
+  <div id="map"></div>
+</main>      
+    
 </body>
 </html>
 
