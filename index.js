@@ -17,20 +17,35 @@ function initializeMap(latitude, longitude) {
   async function fetchBrews(latitude, longitude) {
 
     const params = new URLSearchParams();
-  
+
     params.append('by_dist', `${latitude},${longitude}`)
-    
+        
     const response = await fetch("https://api.openbrewerydb.org/v1/breweries?" + params, {
       method : 'GET',
     });
-  
+
     const breweries = response.json();
-  
+    
     breweries.then(breweries => {
       breweries.forEach(brewery => {
-          // Add a marker for each brewery
-          L.marker([brewery.latitude, brewery.longitude]).addTo(map)
-          .bindPopup(`<b>${brewery.name}</b><br>${brewery.city}, ${brewery.state}`)
+        // Create the address string
+        let address = '';
+        // If the address_1 field is not empty, add it to the address string
+        let searchAddress = brewery.address_1 ? brewery.address_1 : '';
+
+        // Add brewery name to the address string
+        address += `<b>${brewery.name}</b><br>`;
+
+        // Begin constructing search string for Google Maps
+        const search = `${searchAddress}, ${brewery.city}, ${brewery.state}, ${brewery.postal_code}`;
+        search.split(' ').join('+');
+
+        //  Create link for Google Maps search
+        address += `<a href="https://www.google.com/maps/place/${search}">${searchAddress} ${brewery.city} ${brewery.state} ${brewery.postal_code}</a><br>`;
+        address += `<br>${brewery.brewery_type.toUpperCase()}`;
+        // Add a marker for each brewery
+        L.marker([brewery.latitude, brewery.longitude]).addTo(map)
+          .bindPopup(address)
           .openPopup();
       });
     });
@@ -93,7 +108,6 @@ window.addEventListener("load", () => {
   getLocation()
     .then(({ latitude, longitude }) => {
       initializeMap(latitude, longitude);
-      recenterMap(latitude, longitude);
     })
     .catch(error => {
       console.error("Error occurred:", error);
