@@ -4,7 +4,8 @@
   .leaflet-control-zoom-out,
   .leaflet-control-attribution,
   .leaflet-popup-content-wrapper,
-  .leaflet-popup-tip
+  .leaflet-popup-tip,
+  .leaflet-marker-icon 
   {
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
   }
@@ -23,8 +24,8 @@ h1 {
   overflow: auto;
 }
 
-.leaflet-marker-icon {
-  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+#my-marker {
+  filter: hue-rotate(120deg);
 }
 
 #demo {

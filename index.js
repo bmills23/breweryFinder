@@ -10,15 +10,17 @@ function initializeMap(latitude, longitude) {
   }).addTo(map);
 
   // Add a marker for the new address
-  L.marker([latitude, longitude]).addTo(map)
+  const marker = L.marker([latitude, longitude]).addTo(map)
     .bindPopup('You are here!')
     .openPopup();
+  marker._icon.id = 'my-marker';
 
   async function fetchBrews(latitude, longitude) {
 
     const params = new URLSearchParams();
 
     params.append('by_dist', `${latitude},${longitude}`)
+    params.append('per_page', 20)
         
     const response = await fetch("https://api.openbrewerydb.org/v1/breweries?" + params, {
       method : 'GET',
