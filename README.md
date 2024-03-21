@@ -1,6 +1,6 @@
 # breweryFinder
 
-Brewery Finder Using
+Brewery Finder Using Open Brewery DB API and Leaflet.js.  Totally open source.
 
 ## Description
 
@@ -13,7 +13,9 @@ Search function pending functionality.
 
 Onload, will render pins for the nearest 20 breweries.  Can change the search param function on line 22, but please don't abuse the API.  It's free!!!!  
 
+## Link to Static Website
 
+https://bmills23.github.io/breweryFinder/
 
 ## License
 
