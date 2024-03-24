@@ -21,16 +21,18 @@ async function initializeMap(latitude, longitude) {
 
   async function fetchBrews(latitude, longitude) {
     const cacheKey = `${latitude},${longitude}`;
-  
+
     // Check if the response is already cached
     const cachedResponse = await caches.match(cacheKey);
 
     // If the response is cached, return the cached response else fetch the response
     async function fetchBreweryData(cachedResponse) {
       if (cachedResponse) {
+
         const breweries = await cachedResponse.json();
         console.log('Using cached response:', breweries);
         return breweries;
+
       } else {
 
         const params = new URLSearchParams();
@@ -53,7 +55,19 @@ async function initializeMap(latitude, longitude) {
       }
     }
 
-    const breweries = await fetchBreweryData(cachedResponse);
+    // Create a promise to fetch the breweries
+    const breweries = new Promise ((resolve, reject) => {
+      fetchBreweryData(cachedResponse)
+        .then(breweries => {
+          resolve(breweries);
+        })
+        .catch(error => {
+          console.error('Error fetching breweries:', error);
+          reject(error);
+        });
+    }) 
+
+    console.log(breweries);
     
     breweries.then(breweries => {
       breweries.forEach(brewery => {

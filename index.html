@@ -17,10 +17,22 @@
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
     <script src="theme.js" defer></script>
+
+    <!--Search, needs to be after index.js-->
     <script src="search.js" defer></script>
 
+    <!---->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!--Leaflet Geosearch-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"
+    />
+
+    <!-- Make sure you put this AFTER leaflet.js, when using with leaflet -->
+    <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
 
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
 
@@ -31,8 +43,15 @@
     <h1>Brewery Finder</h1> 
   </div>
 <main>
-  <input type="text" id="address" placeholder="Search Address">
-  <button id="search-button">Search</button>
+  <div class="search">
+    <input type="text" id="address" placeholder="Search Address">
+    <input type="text" id="latitude" placeholder="Latitude" hidden>
+    <input type="text" id="longitude" placeholder="Longitude" hidden>
+    <button id="search-button">Search</button>
+  
+    <ul id="search-list"></ul>
+  </div>
+
   <div class="map-parent">
     <div id="map"></div>
   </div>
