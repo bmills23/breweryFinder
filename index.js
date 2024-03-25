@@ -8,10 +8,19 @@ button.textContent = 'Recenter Map';
 const mapContainer = document.getElementById('map');
 mapContainer.appendChild(button);
 
+// Initialize the map
+let map;
+
 // initialize the map on the "map" div with a given center and zoom
 async function initializeMap(latitude, longitude) {
+
+  // Remove the map if it already exists
+  if (map) {
+    map.remove();
+  }
+
   // Initialize the map with the new coordinates
-  const map = L.map('map').setView([latitude, longitude], 13);
+  map = L.map('map').setView([latitude, longitude], 10);
 
   // Add OpenStreetMap tiles
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,7 +47,7 @@ async function initializeMap(latitude, longitude) {
         const params = new URLSearchParams();
 
         params.append('by_dist', `${latitude},${longitude}`)
-        params.append('per_page', 1)
+        params.append('per_page', 25)
             
         const response = await fetch("https://api.openbrewerydb.org/v1/breweries?" + params, {
           method : 'GET',
@@ -148,7 +157,7 @@ function getLocation() {
   });
 }
 
-window.addEventListener("load", () => {
+function getBreweries() {
   getLocation()
     .then(({ latitude, longitude }) => {
       initializeMap(latitude, longitude);
@@ -156,4 +165,6 @@ window.addEventListener("load", () => {
     .catch(error => {
       console.error("Error occurred:", error);
   });
-});
+}
+
+window.addEventListener("load", getBreweries);

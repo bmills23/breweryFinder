@@ -54,9 +54,21 @@ addressSearchInput.addEventListener('input', async (event) => {
 searchButton.addEventListener('click', async () => {
     const lat = latitude.value;
     const long = longitude.value;
-    
-    L.marker([lat, long]).addTo(map)
-    .bindPopup('You are here!')
-    .openPopup();
+
+    console.log(map);
+
+    map.eachLayer(layer => {
+        if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+        }
+    });
+
+    initializeMap(lat, long);
+
+    map.setView([lat, long], 10);
+
+    const newMarker = L.marker([lat, long]).addTo(map)
+        .bindPopup('You are here!')
+        .openPopup();
+    newMarker._icon.id = 'my-marker';
 });
-    
