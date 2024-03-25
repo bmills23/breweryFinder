@@ -24,6 +24,18 @@ h1 {
   overflow: auto;
 }
 
+.search-result:hover {
+  cursor: pointer;
+  background-color: oklch(0.756879 0.123666 76.8905);
+  color: oklch(0.140765 0.004386 285.823);
+}
+
+#search-list {
+  background-color: oklch(0.140765 0.004386 285.823);
+  position: absolute;
+  z-index: 10000;
+}
+
 #my-marker {
   filter: hue-rotate(120deg);
 }
