@@ -11,7 +11,7 @@ the app utilizes navigator.geolocation.getCurrentPosition() to function, meaning
 
 Search function pending functionality.
 
-Onload, will render pins for the nearest 20 breweries.  Can change the search param function on line 22, but please don't abuse the API.  It's free!!!!  
+Onload, will render pins for the nearest 25 breweries.  Can change the search param function on line 22, but please don't abuse the API.  It's free!!!!  
 
 ## Link to Static Website
 
