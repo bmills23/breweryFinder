@@ -89,11 +89,12 @@ async function initializeMap(latitude, longitude) {
         address += `<b>${brewery.name}</b><br>`;
 
         // Begin constructing search string for Google Maps
-        const search = `${searchAddress}, ${brewery.city}, ${brewery.state}, ${brewery.postal_code}`;
+        const search = `${brewery.name}, ${searchAddress}, ${brewery.city}, ${brewery.state}, ${brewery.postal_code}`;
         search.split(' ').join('+');
 
         //  Create link for Google Maps search
-        address += `<a href="https://www.google.com/maps/place/${search}">${searchAddress} ${brewery.city} ${brewery.state} ${brewery.postal_code}</a><br>`;
+        https://www.google.com/maps/search/?api=1&query=pizza+seattle+wa
+        address += `<a href="https://www.google.com/maps/search/?api=1&query=${search}" target="_blank">${searchAddress} ${brewery.city} ${brewery.state} ${brewery.postal_code}</a><br>`;
         address += `<br>${brewery.brewery_type.toUpperCase()}`;
         // Add a marker for each brewery
         L.marker([brewery.latitude, brewery.longitude]).addTo(map)
