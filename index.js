@@ -93,7 +93,6 @@ async function initializeMap(latitude, longitude) {
         search.split(' ').join('+');
 
         //  Create link for Google Maps search
-        https://www.google.com/maps/search/?api=1&query=pizza+seattle+wa
         address += `<a href="https://www.google.com/maps/search/?api=1&query=${search}" target="_blank">${searchAddress} ${brewery.city} ${brewery.state} ${brewery.postal_code}</a><br>`;
         address += `<br>${brewery.brewery_type.toUpperCase()}`;
         // Add a marker for each brewery
