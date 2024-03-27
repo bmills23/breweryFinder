@@ -1,6 +1,10 @@
 @media (prefers-color-scheme: dark) {
-  .anchor:hover {
+  .anchor {
     filter: invert(100%);
+  }
+
+  .anchor:hover {
+    filter: none;
     text-decoration: underline;
   }
   
@@ -14,13 +18,16 @@
     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
   }
 
+  .leaflet-attribution-flag {
+    filter: invert(100%) hue-rotate(-180deg) brightness(105%) contrast(111%);
+  }
+
   #favicon {
     filter: invert(0%);
   }
 
   #logo {
     filter: invert(67%) sepia(68%) saturate(281%) hue-rotate(357deg) brightness(85%) contrast(87%) drop-shadow(6px 6px 12px #c59d60);
-
   }
 
   #search-list {
@@ -38,20 +45,21 @@
   }
 }
 
-main {
+h1, #repo {
+  padding-top: 0.5rem;
   width: 100%;
-  height: 100%;
-  margin: 1rem;
-  display: block;
-  justify-content: center;
 }
 
-h1, #repo {
-  width: 100%;
-  padding-top: 0.5rem;
+main, .heading {
+  margin: 0 1rem;
+}
+
+.anchor {
+  color: #8848ff;
 }
 
 .anchor:hover {
+  color: var(--fallback-bc, oklch(var(--bc) / 1));
   text-decoration: underline;
 }
 
@@ -61,6 +69,11 @@ h1, #repo {
 
 .heading {
   margin-top: 1rem;
+}
+
+.map-parent {
+  display: flex;
+  justify-content: center;
 }
 
 .search-result:hover {
@@ -73,17 +86,12 @@ h1, #repo {
   filter: invert(100%);
 }
 
-#logo {
-  margin-left: 1rem;
-}
-
 #recenter-map {
   border-radius: 0.5rem;
 }
 
 #repo {
   text-align: end;
-  margin-right: 1rem;
 }
 
 #search-button {
@@ -93,15 +101,21 @@ h1, #repo {
   transition: all 0.1s ease-in-out;
 }
 
-#search-button:hover {
-  cursor: pointer;
+@media(hover: hover) {
+  #search-button:hover {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;  
+    background-color: var(--fallback-bc, oklch(var(--bc) / 1));
+    color: var(--fallback-b1, oklch(var(--b1) / 1));
+  }
+}
+
+#search-button:active {
   border: 1px solid black;
   border-radius: 5px;  
   background-color: var(--fallback-bc, oklch(var(--bc) / 1));
   color: var(--fallback-b1, oklch(var(--b1) / 1));
-}
-
-#search-button:active {
   scale: 0.9;  
 }
 
@@ -110,6 +124,7 @@ h1, #repo {
   background-color: var(--fallback-b1, oklch(var(--b1) / 1));
   color: var(--fallback-bc, oklch(var(--bc) / 1));
   position: absolute;
+  left: 0;
   z-index: 10000;
 }
 
@@ -123,9 +138,10 @@ h1, #repo {
   height: 20%;
 }
 
+
 #map {
-  width: 90%;
-  height: 80vh;
+  width: 100vw;
+  height: 70vh;
   position: relative;
 }
 
