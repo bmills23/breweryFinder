@@ -18,10 +18,10 @@
     <script src="index.js" defer></script>
     <script src="theme.js" defer></script>
 
-    <!--Search, needs to be after index.js-->
-    <script src="search.js" defer></script>
 
-    <!---->
+    <script src="position.js" defer></script>
+
+    <!--Tailwind-->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -34,6 +34,9 @@
     <!-- Make sure you put this AFTER leaflet.js, when using with leaflet -->
     <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
 
+    <!--Search, needs to be after index.js-->
+    <script src="search.js" defer></script>
+
     <link id="favicon" rel="icon" type="image/x-icon">
 
     <title>Brewery Finder</title>
@@ -45,7 +48,7 @@
       <a id="repo" class="anchor" href="https://github.com/bmills23/breweryFinder">This Site's Repo</a>
   </div>
 <main>
-  <div class="search">
+  <div class="search-parent">
     <input type="text" id="address" placeholder="Search Address">
     <input type="text" id="latitude" placeholder="Latitude" hidden>
     <input type="text" id="longitude" placeholder="Longitude" hidden>
@@ -65,7 +68,7 @@
           <span style="float:right">Data Provided By <a class="anchor" href="https://openbrewerydb.org/">Open Brewery DB</a></span>
       </div>
       <hr/>
-      <span class="block text-sm sm:text-center">© 2024 <a class="anchor" href="https://github.com/bmills23" class="hover:underline">Bryan Mills</a>. All Rights Reserved.</span>
+      <span class="block text-sm sm:text-center">© 2024 <a class="anchor" href="https://github.com/bmills23">Bryan Mills</a>. All Rights Reserved.</span>
   </div>
 </footer>
 </body>

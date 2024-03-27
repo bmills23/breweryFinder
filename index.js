@@ -101,8 +101,13 @@ async function initializeMap(latitude, longitude) {
           .openPopup();
         // Add a marker for the new address
         const marker = L.marker([latitude, longitude]).addTo(map)
-          .bindPopup('You are here!')
-          .openPopup();
+        if (latitude === 39.7529712 && longitude === -104.9998919) {
+          marker.bindPopup('Come to Denver!');
+          marker.openPopup();
+        } else {
+          marker.bindPopup('You are here!');
+          marker.openPopup();
+        }
         marker._icon.id = 'my-marker';
       });
     });
@@ -162,9 +167,12 @@ function getBreweries() {
     .then(({ latitude, longitude }) => {
       initializeMap(latitude, longitude);
     })
-    .catch(error => {
+    .catch((error) => {
+      // Default to Denver if geolocation fails
+      initializeMap(39.7529712, -104.9998919);
       console.error("Error occurred:", error);
   });
 }
 
 window.addEventListener("load", getBreweries);
+
